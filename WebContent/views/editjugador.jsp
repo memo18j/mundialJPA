@@ -1,7 +1,7 @@
 <div class="row">
 <div class="col-xs-12 col-sm-2"></div>
 <div class="col-xs-12 col-sm-8 " id="border">
-    <h2>Registrar Jugador</h2>
+    <h2>Actualizar Jugador</h2>
     <form action="JugadorServlet" method="post">
       <div class="form-group col-xs-12 col-sm-6">
       <label for="nombre">Equipo </label>

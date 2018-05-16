@@ -28,7 +28,7 @@
              <td>
              <c:out value = "${item.presidente}"/>
              </td>
-            <td><a class="btn btn-danger" href="#" data-mm="equipo"><span class="glyphicon glyphicon-pencil"></span></a></td>
+            <td><a class="btn btn-danger" href="EditarEquipoServlet?id=${item.id}"><span class="glyphicon glyphicon-pencil"></span></a></td>
         	<td><a class="btn btn-danger" href="EliminarEquipoServlet?id=${item.id}"><span class="glyphicon glyphicon-trash"></span></a></td>
              
          </tr>
@@ -41,11 +41,3 @@
   </div>
   <div class="col-xs-12 col-sm-1"></div>
 </div>
-<script type="text/javascript">
-   $("td a").click(function(event){
-      event.preventDefault();
-      if($(this).data('mm')!= null){
-           $("#contenedor").load('views/'+$(this).data('mm')+'.jsp');
-      }
-  });
-</script>

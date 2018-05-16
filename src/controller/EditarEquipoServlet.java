@@ -14,16 +14,16 @@ import model.EquipoDao;
 import util.Controlador;
 
 /**
- * Servlet implementation class EquipoServlet
+ * Servlet implementation class EditarEquipoServlet
  */
-@WebServlet("/EquipoServlet")
-public class EquipoServlet extends HttpServlet {
+@WebServlet("/EditarEquipoServlet")
+public class EditarEquipoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EquipoServlet() {
+    public EditarEquipoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,27 +33,23 @@ public class EquipoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+        System.out.println("hola");
+		Controlador c = new Controlador();
+		int id = Integer.parseInt(request.getParameter("id"));
+		EquipoDao d = new EquipoDao();
+		Equipo eq = d.find(id);
+		System.out.println(eq.getNombre() + eq.getPresidente());
+		request.setAttribute("equipo",eq);
+		RequestDispatcher rd = request.getRequestDispatcher("views/editequipo.jsp");
+		rd.forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		EquipoDao d = new EquipoDao();
-		Equipo eq = new Equipo();
-		Controlador c = new Controlador();
-		String nombre = request.getParameter("nombre");
-		String presidente = request.getParameter("presidente");
-		System.out.println("n: " + nombre);
-		System.out.println("p: " + presidente);
-//		c.registrarEquipo(nombre, presidente);
-//		eq.setNombre(nombre);
-//		eq.setPresidente(presidente);
-//		d.insert(eq);
-		c.registrarEquipo(nombre, presidente);
-		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-		rd.forward(request, response);
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

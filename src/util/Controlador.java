@@ -2,6 +2,7 @@ package util;
 
 import java.util.Date;
 
+
 import java.util.List;
 
 
@@ -21,7 +22,7 @@ public void registrarEquipo(String nombre, String presidente){
 		usDao.insert(u);
 	}
 
-	public void eliminarUsuario(int id) {
+	public void eliminarEquipo(int id) {
 		
 		GenericDao<Equipo> usDao= new EquipoDao();
 		Equipo u = usDao.find(id);
@@ -56,5 +57,15 @@ public void registrarEquipo(String nombre, String presidente){
 		u.setEquipoBean(e);
 		GenericDao<Jugador>juDao= new JugadorDao();
 		juDao.insert(u);
+	}
+    
+    public void eliminarJugador(int equipo, int numero) {
+		
+		JugadorPK pk =  new JugadorPK(equipo,numero);
+		
+		GenericDao<Jugador> usDao= new JugadorDao();
+		Jugador u = usDao.find(pk);
+		usDao.delete(u);
+		
 	}
 }

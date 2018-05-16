@@ -2,12 +2,15 @@ package controller;
 
 import java.io.IOException;
 
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import util.Controlador;
 
 /**
  * Servlet implementation class EliminarEquipoServlet
@@ -29,10 +32,11 @@ public class EliminarEquipoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		 System.out.println("hola");
-		 String mid = request.getParameter("id");
-		    System.out.println(mid);
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		Controlador c = new Controlador();
+		int id = Integer.parseInt(request.getParameter("id"));
+		c.eliminarEquipo(id);
+		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+		rd.forward(request, response);
 	}
 
 	/**
